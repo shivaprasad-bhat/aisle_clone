@@ -3,6 +3,7 @@ package me.svbneelmane.aisle_clone.view
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
 import me.svbneelmane.aisle_clone.R
 import me.svbneelmane.aisle_clone.databinding.FragmentOtpBinding
 
@@ -12,5 +13,14 @@ class OTPFragment : Fragment(R.layout.fragment_otp) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentOtpBinding.bind(view)
+
+        binding.buttonVerifyOTP.setOnClickListener {
+            navigateToDashboard()
+        }
+    }
+
+    private fun navigateToDashboard() {
+        Navigation.findNavController(requireView())
+            .navigate(OTPFragmentDirections.navigateToDashboardFragment())
     }
 }
