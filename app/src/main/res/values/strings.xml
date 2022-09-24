@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">aisle_clone</string>
+    <string name="hello_blank_fragment">Blank Fragment</string>
 </resources>

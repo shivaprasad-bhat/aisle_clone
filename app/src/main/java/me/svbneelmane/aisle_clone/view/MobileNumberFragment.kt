@@ -1,19 +1,17 @@
 package me.svbneelmane.aisle_clone.view
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import me.svbneelmane.aisle_clone.R
+import me.svbneelmane.aisle_clone.databinding.FragmentMobileNumberBinding
 
-class MobileNumberFragment : Fragment() {
+class MobileNumberFragment : Fragment(R.layout.fragment_mobile_number) {
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_mobile_number, container, false)
+    private lateinit var binding: FragmentMobileNumberBinding
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding = FragmentMobileNumberBinding.bind(view)
     }
 }
