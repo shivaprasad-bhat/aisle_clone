@@ -3,9 +3,11 @@ package me.svbneelmane.aisle_clone.view
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import dagger.hilt.android.AndroidEntryPoint
 import me.svbneelmane.aisle_clone.R
 import me.svbneelmane.aisle_clone.databinding.FragmentDashboardBinding
 
+@AndroidEntryPoint
 class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
 
     private lateinit var binding: FragmentDashboardBinding

@@ -2,6 +2,8 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'androidx.navigation.safeargs'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -42,6 +44,7 @@ dependencies {
 
     def navigationComponentVersion = "2.5.2"
     def lifecycleVersion = "2.5.1"
+    def diVersion = "2.42"
 
     implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.appcompat:appcompat:1.5.1'
@@ -61,6 +64,23 @@ dependencies {
     implementation 'androidx.fragment:fragment-ktx:1.5.3'
     api "androidx.navigation:navigation-fragment-ktx:$navigationComponentVersion"
     api "androidx.navigation:navigation-ui-ktx:$navigationComponentVersion"
+
+    // For DI
+    implementation "com.google.dagger:hilt-android:$diVersion"
+    kapt "com.google.dagger:hilt-compiler:$diVersion"
+    kapt "org.jetbrains.kotlinx:kotlinx-metadata-jvm:0.4.2"
+
+    // For Retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.0'
+    implementation 'com.squareup.okhttp3:okhttp:4.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2'
+    implementation 'com.squareup.okhttp3:okhttp-urlconnection:4.9.0'
+
+    // Kotlin coroutines
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1'
 
     // For tests
     testImplementation 'junit:junit:4.13.2'
