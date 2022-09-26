@@ -31,7 +31,8 @@ class AisleViewModel @Inject constructor(private val repository: AisleRepository
         _success.postValue(false)
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                val result = repository.generateOTP(GenerateOTPRequest("+918747068436"))
+                val result =
+                    repository.generateOTP(GenerateOTPRequest(mobileNumber.value.toString()))
                 _success.postValue(result)
             }
 
@@ -42,7 +43,12 @@ class AisleViewModel @Inject constructor(private val repository: AisleRepository
         _otpValidationSuccess.postValue(false)
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                val result = repository.verifyOTP(VerifyOTPRequest("+918747068436", "1234"))
+                val result = repository.verifyOTP(
+                    VerifyOTPRequest(
+                        mobileNumber.value.toString(),
+                        otp.value.toString()
+                    )
+                )
                 _otpValidationSuccess.postValue(result)
             }
         }
