@@ -5,7 +5,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import me.svbneelmane.aisle_clone.services.APIServices
+import me.svbneelmane.aisle_clone.network.services.APIServices
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
@@ -16,8 +16,9 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideAPIService(): APIServices = Retrofit.Builder().baseUrl("https://testa2.aisle.co/V1")
+    fun provideAPIService(): APIServices = Retrofit.Builder().baseUrl("https://testa2.aisle.co/V1/")
         .addConverterFactory(GsonConverterFactory.create())
-        .addCallAdapterFactory(CoroutineCallAdapterFactory()).build()
+        .addCallAdapterFactory(CoroutineCallAdapterFactory())
+        .build()
         .create(APIServices::class.java)
 }

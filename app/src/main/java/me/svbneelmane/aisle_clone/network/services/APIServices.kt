@@ -1,17 +1,14 @@
-package me.svbneelmane.aisle_clone.services
+package me.svbneelmane.aisle_clone.network.services
 
 import me.svbneelmane.aisle_clone.models.request.GenerateOTPRequest
 import me.svbneelmane.aisle_clone.models.response.GenerateOTPResponse
-import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.POST
-import retrofit2.http.Url
 
 interface APIServices {
 
-    @POST
-    fun generateOTP(
-        @Url url: String,
+    @POST("users/phone_number_login")
+    suspend fun generateOTP(
         @Body body: GenerateOTPRequest
-    ): Call<GenerateOTPResponse>
+    ): GenerateOTPResponse
 }
