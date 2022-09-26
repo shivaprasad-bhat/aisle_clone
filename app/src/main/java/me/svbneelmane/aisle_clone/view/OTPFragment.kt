@@ -2,6 +2,7 @@ package me.svbneelmane.aisle_clone.view
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
@@ -24,10 +25,11 @@ class OTPFragment : Fragment(R.layout.fragment_otp) {
         }
 
         observe()
-
-        binding.buttonVerifyOTP.setOnClickListener {
-            aisleViewModel.verifyOTP()
-        }
+        Toast.makeText(
+            requireContext(),
+            "Mobile Number is ${aisleViewModel.mobileNumber.value}",
+            Toast.LENGTH_LONG
+        ).show()
     }
 
     private fun navigateToDashboard() {
@@ -36,7 +38,7 @@ class OTPFragment : Fragment(R.layout.fragment_otp) {
     }
 
     private fun observe() {
-        aisleViewModel.success.observe(viewLifecycleOwner) {
+        aisleViewModel.otpValidationSuccess.observe(viewLifecycleOwner) {
             if (it) navigateToDashboard()
         }
     }

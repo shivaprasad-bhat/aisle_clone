@@ -20,6 +20,10 @@ class AisleViewModel @Inject constructor(private val repository: AisleRepository
     val success: LiveData<Boolean>
         get() = _success
 
+    private var _otpValidationSuccess = MutableLiveData(false)
+    val otpValidationSuccess: LiveData<Boolean>
+        get() = _otpValidationSuccess
+
     val mobileNumber = MutableLiveData("")
     val otp = MutableLiveData("")
 
@@ -35,11 +39,11 @@ class AisleViewModel @Inject constructor(private val repository: AisleRepository
     }
 
     fun verifyOTP() {
-        _success.postValue(false)
+        _otpValidationSuccess.postValue(false)
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
                 val result = repository.verifyOTP(VerifyOTPRequest("+918747068436", "1234"))
-                _success.postValue(result)
+                _otpValidationSuccess.postValue(result)
             }
         }
     }
