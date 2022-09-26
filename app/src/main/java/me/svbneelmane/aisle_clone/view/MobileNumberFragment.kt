@@ -15,13 +15,15 @@ import me.svbneelmane.aisle_clone.viewModel.AisleViewModel
 class MobileNumberFragment : Fragment(R.layout.fragment_mobile_number) {
 
     private lateinit var binding: FragmentMobileNumberBinding
-    private val viewModel: AisleViewModel by activityViewModels()
+    private val aisleViewModel: AisleViewModel by activityViewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentMobileNumberBinding.bind(view)
-        binding.lifecycleOwner = viewLifecycleOwner
-        binding.viewModel = this.viewModel
+        binding.apply {
+            lifecycleOwner = viewLifecycleOwner
+            viewModel = aisleViewModel
+        }
         observe()
     }
 
@@ -31,7 +33,7 @@ class MobileNumberFragment : Fragment(R.layout.fragment_mobile_number) {
     }
 
     private fun observe() {
-        viewModel.success.observe(viewLifecycleOwner) {
+        aisleViewModel.success.observe(viewLifecycleOwner) {
             if (it) navigateToOTPScreen()
         }
     }
