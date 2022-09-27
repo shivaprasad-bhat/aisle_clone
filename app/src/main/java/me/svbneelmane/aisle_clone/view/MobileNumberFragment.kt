@@ -10,7 +10,10 @@ import me.svbneelmane.aisle_clone.R
 import me.svbneelmane.aisle_clone.databinding.FragmentMobileNumberBinding
 import me.svbneelmane.aisle_clone.viewModel.AisleViewModel
 
-
+/**
+ * Entry level fragment to generate OTP after entering mobile number
+ * @author shivaprasad-bhat
+ */
 @AndroidEntryPoint
 class MobileNumberFragment : Fragment(R.layout.fragment_mobile_number) {
 
@@ -27,11 +30,15 @@ class MobileNumberFragment : Fragment(R.layout.fragment_mobile_number) {
         observe()
     }
 
+    /**
+     * Navigate to OTP Screen
+     */
     private fun navigateToOTPScreen() {
         Navigation.findNavController(requireView())
             .navigate(MobileNumberFragmentDirections.navigateToOtpFragment())
     }
 
+    // Observer
     private fun observe() {
         aisleViewModel.success.observe(viewLifecycleOwner) {
             if (it) navigateToOTPScreen()

@@ -27,6 +27,9 @@ class AisleViewModel @Inject constructor(private val repository: AisleRepository
     val mobileNumber = MutableLiveData("")
     val otp = MutableLiveData("")
 
+    /**
+     * Generate OTP API call initialization
+     */
     fun generateOTP() {
         _success.postValue(false)
         viewModelScope.launch {
@@ -39,6 +42,9 @@ class AisleViewModel @Inject constructor(private val repository: AisleRepository
         }
     }
 
+    /**
+     * Verify OTP call initialization
+     */
     fun verifyOTP() {
         _otpValidationSuccess.postValue(false)
         viewModelScope.launch {

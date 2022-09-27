@@ -7,6 +7,10 @@ import dagger.hilt.android.AndroidEntryPoint
 import me.svbneelmane.aisle_clone.R
 import me.svbneelmane.aisle_clone.databinding.FragmentDashboardBinding
 
+/**
+ * Fragment class to show the dashboard content
+ * @author shivaprasad-bhat
+ */
 @AndroidEntryPoint
 class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
 
